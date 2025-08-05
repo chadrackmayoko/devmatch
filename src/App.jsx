@@ -2,21 +2,31 @@ import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import DevlopperCard from './components/DevelopperCard'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+import NotFound from './pages/NotFound'
+import { DevProfile } from './pages/DevProfile'
+import  {DevsList}  from './pages/DevsList'
+import { Contact } from './pages/Contact'
 
 function App() {
 
   return (
   <>
-      <div className="bg-gray-100 min-h-screen">
         <Navbar />
-        <main className="p-4 flex flex-col items-center gap-4"> 
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Listes des developpeurs</h2>
-          <DevlopperCard name="Chadrack Mayoko" stack="Laravel react" location="Quebec, QC"/>
-          <DevlopperCard name="Chadrack Mayoko" stack="Laravel react" location="Quebec, QC"/>
-          <DevlopperCard name="Chadrack Mayoko" stack="Laravel react" location="Quebec, QC"/>
+        <main className="p-4"> 
+          <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/About" element={<About/>} />
+          <Route path="*" element={<NotFound/>} />
+          <Route path="/profil/:id" element={<DevProfile/>}/>
+          <Route path="/devs" element={<DevsList />} />
+          <Route path="/contact" element={<Contact />} />
 
+    </Routes>
         </main>
-      </div>
+      
      
     </>
   )
